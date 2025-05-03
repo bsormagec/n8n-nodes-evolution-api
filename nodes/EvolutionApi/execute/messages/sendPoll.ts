@@ -8,7 +8,7 @@ import { evolutionRequest } from '../evolutionRequest';
 
 export async function sendPoll(ef: IExecuteFunctions) {
 	try {
-		// Parâmetros obrigatórios
+		// Required parameters
 		const instanceName = ef.getNodeParameter('instanceName', 0);
 		const remoteJid = ef.getNodeParameter('remoteJid', 0);
 		const pollTitle = ef.getNodeParameter('caption', 0);
@@ -16,7 +16,7 @@ export async function sendPoll(ef: IExecuteFunctions) {
 			optionValue: string;
 		}[];
 
-		// Opções adicionais
+		// Additional options
 		const options_message = ef.getNodeParameter('options_message', 0, {}) as {
 			delay?: number;
 			quoted?: {
@@ -33,8 +33,8 @@ export async function sendPoll(ef: IExecuteFunctions) {
 			const errorData = {
 				success: false,
 				error: {
-					message: 'Opções da enquete inválidas',
-					details: 'A enquete precisa ter pelo menos uma opção',
+					message: 'Invalid poll options',
+					details: 'The poll must have at least one option',
 					code: 'INVALID_POLL_OPTIONS',
 					timestamp: new Date().toISOString(),
 				},
@@ -88,10 +88,10 @@ export async function sendPoll(ef: IExecuteFunctions) {
 			success: false,
 			error: {
 				message: error.message.includes('Could not get parameter')
-					? 'Parâmetros inválidos ou ausentes'
-					: 'Erro ao enviar enquete',
+					? 'Invalid or missing parameters'
+					: 'Error sending poll',
 				details: error.message.includes('Could not get parameter')
-					? 'Verifique se todos os campos obrigatórios foram preenchidos corretamente'
+					? 'Verify that all required fields have been filled correctly'
 					: error.message,
 				code: error.code || 'UNKNOWN_ERROR',
 				timestamp: new Date().toISOString(),

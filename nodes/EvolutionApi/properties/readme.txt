@@ -13,7 +13,7 @@ Operation = Functions/Options of each Resource (Instance, Messages, Integration,
 
 "What each Resource will present when selected"
 
-Exemplo:
+Example:
 Instances:
   • Create instance;
   • Create instance with proxy;
@@ -35,7 +35,7 @@ Elements = The fields that appear in each Operation
 
 "Each Operation (e.g., Send Text Message) has fields that need to be filled in to make a request"
 
-Exemplo:
+Example:
 Send Text Message:
   • Instance that will send;
   • Recipient's RemoteJid;

@@ -15,7 +15,7 @@ export async function setWebhook(ef: IExecuteFunctions) {
 
 		if (resourceForWebhook === 'setWebhook') {
 			const enabled = ef.getNodeParameter('enabled', 0);
-			const webhookUrl = ef.getNodeParameter('webhookUrl', 0) || 'vazio';
+			const webhookUrl = ef.getNodeParameter('webhookUrl', 0) || 'empty';
 			const webhookByEvents = ef.getNodeParameter('webhookByEvents', 0);
 			const webhookBase64 = ef.getNodeParameter('webhookBase64', 0);
 			const webhookEvents = ef.getNodeParameter('webhookEvents', 0) || [];
