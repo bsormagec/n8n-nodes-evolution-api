@@ -62,7 +62,7 @@ export const chatFields: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Message is Mine',
+		displayName: 'Message Is Mine',
 		name: 'fromMe',
 		type: 'boolean' as NodePropertyTypes,
 		default: false,
@@ -130,7 +130,7 @@ export const chatFields: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Message is Mine',
+		displayName: 'Message Is Mine',
 		name: 'fromMe',
 		type: 'boolean' as NodePropertyTypes,
 		default: false,
@@ -174,7 +174,7 @@ export const chatFields: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Message is Mine',
+		displayName: 'Message Is Mine',
 		name: 'fromMe',
 		type: 'boolean' as NodePropertyTypes,
 		default: false,
@@ -218,7 +218,7 @@ export const chatFields: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Message is Mine',
+		displayName: 'Message Is Mine',
 		name: 'fromMe',
 		type: 'boolean' as NodePropertyTypes,
 		default: false,
