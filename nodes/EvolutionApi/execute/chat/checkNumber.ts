@@ -36,7 +36,7 @@ export async function checkNumber(ef: IExecuteFunctions) {
 			success: false,
 			error: {
 				message: error.message,
-				details: 'Erro ao verificar números no WhatsApp',
+				details: 'Error verifying WhatsApp numbers',
 				code: error.code || 'UNKNOWN_ERROR',
 				timestamp: new Date().toISOString(),
 			},

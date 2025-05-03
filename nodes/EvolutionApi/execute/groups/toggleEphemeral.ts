@@ -35,7 +35,7 @@ export async function toggleEphemeral(ef: IExecuteFunctions) {
 			success: false,
 			error: {
 				message: error.message,
-				details: 'Erro ao configurar mensagens temporárias',
+				details: 'Error configuring ephemeral messages',
 				code: error.code || 'UNKNOWN_ERROR',
 				timestamp: new Date().toISOString(),
 			},
