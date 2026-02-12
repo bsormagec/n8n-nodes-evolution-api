@@ -25,10 +25,20 @@ export async function sendReaction(ef: IExecuteFunctions) {
 
 		// validate single emoji or empty
 		if (reaction !== '' && [...reaction].length !== 1) {
-			throw new NodeOperationError(
-				ef.getNode(),
-				'Reaction must be a single emoji or empty string'
-			);
+			const errorData = {
+				success: false,
+				error: {
+					message: 'Invalid reaction',
+					details: 'You must provide an emoji for the reaction',
+					code: 'INVALID_REACTION',
+					timestamp: new Date().toISOString(),
+				},
+			};
+
+			return {
+				json: errorData,
+				error: errorData,
+			};
 		}
 
 		const body: any = {

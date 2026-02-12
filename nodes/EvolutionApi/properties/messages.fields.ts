@@ -1820,8 +1820,8 @@ export const messagesFields: INodeProperties[] = [
 		name: 'reaction',
 		type: 'string',
 		default: '👍',
-		required: true,
-		description: 'Emoji to be used as a reaction',
+		required: false,
+		description: 'Emoji to be used as a reaction (empty to remove reaction)',
 		displayOptions: {
 			show: {
 				resource: ['messages-api'],
