@@ -13,10 +13,18 @@ export async function sendReaction(ef: IExecuteFunctions) {
 		const remoteJid = ef.getNodeParameter('remoteJid', 0) as string;
 		const messageId = ef.getNodeParameter('messageId', 0) as string;
 		const fromMe = ef.getNodeParameter('fromMe', 0) as boolean;
-		const reaction = ef.getNodeParameter('reaction', 0) as string;
 
-		// Reaction validation
-		if (!reaction) {
+
+		// Reaction validation (allow empty string to remove reaction)
+		let reaction = ef.getNodeParameter('reaction', 0, '') as string;
+
+		// allow empty string
+		if (reaction === undefined || reaction === null) {
+			reaction = '';
+		}
+
+		// validate single emoji or empty
+		if (reaction !== '' && [...reaction].length !== 1) {
 			const errorData = {
 				success: false,
 				error: {
@@ -26,6 +34,7 @@ export async function sendReaction(ef: IExecuteFunctions) {
 					timestamp: new Date().toISOString(),
 				},
 			};
+
 			return {
 				json: errorData,
 				error: errorData,
