@@ -13,23 +13,22 @@ export async function sendReaction(ef: IExecuteFunctions) {
 		const remoteJid = ef.getNodeParameter('remoteJid', 0) as string;
 		const messageId = ef.getNodeParameter('messageId', 0) as string;
 		const fromMe = ef.getNodeParameter('fromMe', 0) as boolean;
-		const reaction = ef.getNodeParameter('reaction', 0) as string;
 
-		// Reaction validation
-		if (!reaction) {
-			const errorData = {
-				success: false,
-				error: {
-					message: 'Invalid reaction',
-					details: 'You must provide an emoji for the reaction',
-					code: 'INVALID_REACTION',
-					timestamp: new Date().toISOString(),
-				},
-			};
-			return {
-				json: errorData,
-				error: errorData,
-			};
+
+		// Reaction validation (allow empty string to remove reaction)
+		let reaction = ef.getNodeParameter('reaction', 0, '') as string;
+
+		// allow empty string
+		if (reaction === undefined || reaction === null) {
+			reaction = '';
+		}
+
+		// validate single emoji or empty
+		if (reaction !== '' && [...reaction].length !== 1) {
+			throw new NodeOperationError(
+				ef.getNode(),
+				'Reaction must be a single emoji or empty string'
+			);
 		}
 
 		const body: any = {
